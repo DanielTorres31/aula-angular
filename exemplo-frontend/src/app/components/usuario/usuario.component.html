@@ -1,17 +1,14 @@
 <div>
-  <button type="button">Novo Usuário</button>
+  <button type="button" (click)="novoUsuario()">Novo Usuário</button>
 </div>
 <table>
   <tr>
     <th>Nome</th>
     <th>E-mail</th>
   </tr>
-  <tr>
-    <td>Daniel</td>
-    <td>danieltorres31@outlook.com</td>
-  </tr>
-  <tr>
-    <td>Joãozinho</td>
-    <td>joaozinho@gmail.com</td>
+  <tr *ngFor="let usuario of usuarios">
+    <td>{{ usuario.nome }}</td>
+    <td>{{ usuario.email }}</td>
   </tr>
 </table>
+<span *ngIf="usuarios.length == 0">Nenhum registro encontrado.</span>

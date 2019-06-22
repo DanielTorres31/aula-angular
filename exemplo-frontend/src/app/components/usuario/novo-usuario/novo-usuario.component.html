@@ -1,16 +1,16 @@
-<form>
+<form #f="ngForm">
   <div>
     <label>Nome: </label>
-    <input type="text" name="nome">
+    <input type="text" name="nome" [(ngModel)]="usuario.nome">
   </div>
   <div>
     <label>E-mail: </label>
-    <input type="text" name="email">
+    <input type="text" name="email" [(ngModel)]="usuario.email">
   </div>
   <div>
     <label>Senha: </label>
-    <input type="text" name="senha">
+    <input type="text" name="senha" [(ngModel)]="usuario.senha">
   </div>
-  <button type="button" >Salvar</button>
-  <button type="button" >Voltar</button>
+  <button type="button" (click)="salvaUsuario()">Salvar</button>
+  <button type="button" (click)="retornaTela()">Voltar</button>
 </form>

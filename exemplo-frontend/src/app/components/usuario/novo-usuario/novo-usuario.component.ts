@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { UsuarioService } from './../shared/usuario.service';
+import { Usuario } from '../shared/usuario.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-novo-usuario',
@@ -7,9 +10,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NovoUsuarioComponent implements OnInit {
 
-  constructor() { }
+  usuario: Usuario = new Usuario();
+
+  constructor(private usuarioService: UsuarioService, private router: Router) { }
 
   ngOnInit() {
+  }
+
+  salvaUsuario() {
+    this.usuarioService.insereUsuario(this.usuario).subscribe((resposta: any) => {
+      alert('Usuário salvo com sucesso!');
+      this.retornaTela();
+    });
+  }
+
+  isNomeUsuarioVazio(nome: string) {
+    if(nome && nome.length > 0) {
+      return false;
+    }
+    return true;
+  }
+
+  retornaTela() {
+    this.router.navigate(['users']);
   }
 
 }
